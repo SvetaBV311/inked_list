@@ -1,15 +1,14 @@
 #include <iostream>
 
-template <class T>  // дл€ функций - template <typename T>
+template <class T>  
 
 class LinkedList {
-	struct Node {   // отличаетс€ от класса только инкапсул€цией
+	struct Node {   
 		T val;
 		std::shared_ptr <Node> next;
 		Node(T val) : val(val), next(nullptr) {};
 	};
-	std::shared_ptr <Node> head = nullptr; // указатель на первый узел (нода) св€занного списка
-
+	std::shared_ptr <Node> head = nullptr; 
 public:
 	void Add(T val) {
 		std::shared_ptr <Node> newNode = std::make_shared <Node>(val);
@@ -17,8 +16,8 @@ public:
 			this->head = newNode;
 		}
 		else {
-			std::shared_ptr <Node> current = this->head;  // если использовать не shared, а delete, то удалитс€ и значение в хеад
-			while (current->next) {  // пока последний элемент не nullptr
+			std::shared_ptr <Node> current = this->head;  
+			while (current->next) { 
 				current = current->next;
 			}
 			current->next = newNode;
